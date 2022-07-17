@@ -81,12 +81,12 @@ contract RunningDevs is ERC721Enumerable, Ownable {
 			_paused = val;
 		}
 
-		function withdraw() public onlyOwner {
-			address _owner = owner();
-			uint256 amount = address(this).balance;
-			(bool sent,) = _owner.call{value: amount}("");
-			require(sent, "Failed to send Ether");
-		}
+		function withdraw() public onlyOwner  {
+    	address _owner = owner();
+      uint256 amount = address(this).balance;
+      (bool sent, ) =  _owner.call{value: amount}("");
+      require(sent, "Failed to send Ether");
+    }
 
 		// Function to receive Ether. msg.data must be empty
     receive() external payable {}
